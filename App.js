@@ -4,7 +4,7 @@ import {
   StyleSheet,
   SafeAreaView,
   Platform,
-  StatusBars,
+  StatusBar,
 } from "react-native";
 import Constants from "expo-constants";
 
@@ -19,5 +19,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });

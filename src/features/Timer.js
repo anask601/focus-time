@@ -1,23 +1,32 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { Countdown } from "../components/Countdown";
+import { ProgressBar } from "react-native-paper";
 import { RoundedButton } from "../components/RoundedButton";
 import { spacing } from "../utils/sizes";
 import { colors } from "../utils/colors";
 
 export const Timer = ({ focusSubject }) => {
   const [isStarted, setIsStarted] = useState(false);
+  const [progress, setProgress] = useState(1);
   return (
     <View style={styles.container}>
       <View style={styles.countdown}>
         <Countdown
           isPaused={!isStarted}
-          onProgress={() => {}}
+          onProgress={setProgress}
           onEnd={() => {}}
         />
         <View style={{ paddingTop: spacing.xxl }}>
           <Text style={styles.title}>Focusing on:</Text>
           <Text style={styles.task}>{focusSubject}</Text>
+        </View>
+        <View style={{ paddingTop: spacing.sm }}>
+          <ProgressBar
+            progress={progress}
+            color={colors.progressBar}
+            style={{ height: spacing.sm }}
+          />
         </View>
       </View>
       <View style={styles.buttonWrapper}>

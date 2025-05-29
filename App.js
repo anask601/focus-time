@@ -26,7 +26,9 @@ export default function App() {
       ) : (
         <Timer
           focusSubject={currentSubject}
-          onTimerEnd={() => {}}
+          onTimerEnd={(subject) => {
+            setHistory([...history, subject]);
+          }}
           clearSubject={() => setCurrentSubject(null)}
         />
       )}
